@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#7054db" />
+    <meta
+      name="description"
+      content="부모의 키로 알아보는 우리 아이 예상 성인 키. 키즈텐과 함께 아이의 성장을 이해해 보세요."
+    />
+    <title>우리 아이 예상 키 · 키즈텐</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="calculator.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#calculator">계산기로 바로 가기</a>
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="키즈텐 처음으로"
+        >kids<span>10</span><i></i
+      ></a>
+      <span class="brand-note">아이의 내일을 키우는 시간</span>
+      <a class="header-link" href="#growth-guide"
+        >성장 가이드
+        <span aria-hidden="true"
+          ><svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 19 19 5M5 5h14v14" /></svg></span
+      ></a>
+    </header>
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> GROWING TOGETHER, EVERY DAY</p>
+          <h1 id="page-title">
+            작은 오늘이 자라,<br /><span>얼마나 커질까요?</span>
+          </h1>
+          <p class="hero-description">
+            엄마와 아빠의 키에 담긴 성장의 힌트.<br />우리 아이의 내일을 함께
+            그려보세요.
+          </p>
+          <a class="hero-link" href="#calculator"
+            >우리 아이 예상 키 알아보기 <span aria-hidden="true">↓</span></a
+          >
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <span class="art-orbit orbit-one"></span
+          ><span class="art-orbit orbit-two"></span>
+          <span class="art-star star-one">✦</span
+          ><span class="art-star star-two">✦</span>
+          <div class="growth-note">
+            매일 조금씩,<br /><strong>쑥쑥 자라는 중!</strong
+            ><svg viewBox="0 0 80 45">
+              <path d="M5 5 Q25 43 68 26 M57 21 L70 26 L63 38" />
+            </svg>
+          </div>
+          <svg class="giraffe" viewBox="0 0 400 390" fill="none">
+            <ellipse cx="228" cy="359" rx="125" ry="15" fill="#DCD5F0" />
+            <rect
+              x="294"
+              y="46"
+              width="40"
+              height="300"
+              rx="20"
+              fill="#FCFAFF"
+              stroke="#DCD5EC"
+              stroke-width="2"
+            />
+            <path
+              d="M294 79h20m-20 22h11m-11 22h20m-20 22h11m-11 22h20m-20 22h11m-11 22h20m-20 22h11m-11 22h20m-20 22h11m-11 22h20m-20 22h11"
+              stroke="#B5A5D6"
+              stroke-width="2"
+            />
+            <path d="M154 347V153c0-26 76-26 76 0v194" fill="#F4C759" />
+            <path
+              d="M173 244c-23-19-10-45 12-36 23 9 15 39-12 36zm26 81c-22-17-5-41 15-34 18 8 11 40-15 34zm-42-44c18-11 23 25 0 27"
+              fill="#DBA543"
+            />
+            <path
+              d="M151 142c-38 0-47-33-37-36 14-5 39 7 47 24m65 12c39 0 47-33 37-36-15-5-39 7-47 24"
+              fill="#F4C759"
+              stroke="#E9B548"
+              stroke-width="2"
+            />
+            <path
+              d="M119 114c12 1 20 6 26 14m106-14c-12 1-20 6-26 14"
+              stroke="#EAB265"
+              stroke-width="6"
+              stroke-linecap="round"
+            />
+            <path
+              d="M169 106l-6-30m40 29 7-29"
+              stroke="#EDBA48"
+              stroke-width="10"
+              stroke-linecap="round"
+            />
+            <circle cx="162" cy="73" r="9" fill="#B6874E" />
+            <circle cx="211" cy="73" r="9" fill="#B6874E" />
+            <rect
+              x="147"
+              y="95"
+              width="85"
+              height="106"
+              rx="42"
+              fill="#F8D36C"
+            />
+            <path d="M184 98c-10 13-5 24 8 23 14-1 13-17 5-24" fill="#DDA747" />
+            <ellipse cx="190" cy="174" rx="35" ry="29" fill="#FFF1CB" />
+            <circle cx="169" cy="143" r="4" fill="#4D3A31" />
+            <circle cx="211" cy="143" r="4" fill="#4D3A31" />
+            <ellipse cx="158" cy="157" rx="7" ry="4" fill="#EFAC6E" />
+            <ellipse cx="221" cy="157" rx="7" ry="4" fill="#EFAC6E" />
+            <circle cx="180" cy="167" r="2.5" fill="#B78C65" />
+            <circle cx="200" cy="167" r="2.5" fill="#B78C65" />
+            <path
+              d="M181 179q9 10 18 0"
+              stroke="#926647"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+            <path
+              d="M153 213c-29 8-36 20-47 13m122-9c24 10 30 2 40-9"
+              stroke="#F4C759"
+              stroke-width="16"
+              stroke-linecap="round"
+            />
+            <path
+              d="M137 349h108"
+              stroke="#B6884E"
+              stroke-width="13"
+              stroke-linecap="round"
+            />
+            <path
+              d="M85 347c-16-10-19-27-12-29 11-3 18 14 18 25-2-24 8-39 15-34 10 8-2 31-13 38"
+              fill="#AAAF91"
+            />
+            <path d="M267 350c-4-16 2-27 8-24 6 3 1 19-8 24z" fill="#AAAF91" />
+          </svg>
+          <div class="art-pill">
+            <span
+              ><svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 19 19 5M5 5h14v14" /></svg
+            ></span>
+            가능성은 무럭무럭
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="calculator-section"
+        id="calculator"
+        aria-labelledby="calculator-title"
+      >
+        <div class="section-heading">
+          <div>
+            <p class="overline">A LITTLE PEEK INTO TOMORROW</p>
+            <h2 id="calculator-title">우리 아이 예상 키</h2>
+          </div>
+          <span class="time-chip"
+            ><span aria-hidden="true">◷</span> 약 10초면 충분해요</span
+          >
+        </div>
+        <div class="calculator-card">
+          <form id="height-form" novalidate>
+            <div class="form-heading">
+              <span class="step-number">01</span>
+              <div>
+                <h3>성장의 힌트를 알려주세요</h3>
+                <p>부모님의 현재 키를 입력해 주세요.</p>
+              </div>
+            </div>
+            <fieldset class="sex-field">
+              <legend>우리 아이 성별</legend>
+              <div class="segmented-control">
+                <label
+                  ><input type="radio" name="sex" value="boy" checked /><span
+                    ><svg viewBox="0 0 24 24" aria-hidden="true">
+                      <circle cx="12" cy="12" r="8" />
+                      <path
+                        d="M5 9c4 1 6-1 7-4 1 3 4 4 7 4M9 12v1m6-1v1m-6 3q3 2 6 0"
+                      /></svg
+                    >남아<span class="selection-dot">✓</span></span
+                  ></label
+                ><label
+                  ><input type="radio" name="sex" value="girl" /><span
+                    ><svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M4 18V10a8 8 0 0 1 16 0v8M6 10c4 0 6-4 6-4s2 4 6 4v3a6 6 0 0 1-12 0zM9 12v1m6-1v1m-6 3q3 2 6 0"
+                      /></svg
+                    >여아<span class="selection-dot">✓</span></span
+                  ></label
+                >
+              </div>
+            </fieldset>
+            <div class="parent-fields">
+              <div class="field">
+                <label for="father-height">아빠 키</label>
+                <div class="input-wrap">
+                  <input
+                    id="father-height"
+                    name="father"
+                    type="text"
+                    inputmode="decimal"
+                    autocomplete="off"
+                    placeholder="예: 175"
+                    aria-describedby="father-error"
+                    maxlength="7"
+                  /><span>cm</span>
+                </div>
+                <p class="field-error" id="father-error"></p>
+              </div>
+              <div class="field">
+                <label for="mother-height">엄마 키</label>
+                <div class="input-wrap">
+                  <input
+                    id="mother-height"
+                    name="mother"
+                    type="text"
+                    inputmode="decimal"
+                    autocomplete="off"
+                    placeholder="예: 162"
+                    aria-describedby="mother-error"
+                    maxlength="7"
+                  /><span>cm</span>
+                </div>
+                <p class="field-error" id="mother-error"></p>
+              </div>
+            </div>
+            <button class="calculate-button" type="submit">
+              우리 아이 예상 키 확인하기
+              <span aria-hidden="true"
+                ><svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 19 19 5M5 5h14v14" /></svg
+              ></span>
+            </button>
+            <div class="form-bottom">
+              <p>
+                <svg viewBox="0 0 16 16" aria-hidden="true">
+                  <rect x="3" y="7" width="10" height="7" rx="2" />
+                  <path d="M5 7V5a3 3 0 0 1 6 0v2" /></svg
+                >입력한 정보는 저장되지 않아요
+              </p>
+              <button id="example-button" type="button">예시로 보기</button>
+            </div>
+          </form>
+          <div
+            class="result-panel"
+            id="result-panel"
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            <div id="empty-result" class="empty-result">
+              <span class="result-eyebrow">OUR LITTLE BIG FUTURE</span>
+              <div class="height-symbol" aria-hidden="true">
+                <span class="symbol-star">✦</span
+                ><span class="height-bar bar-small"></span
+                ><span class="height-bar bar-medium"></span
+                ><span class="height-bar bar-tall"></span
+                ><span class="symbol-arrow"
+                  ><svg
+                    class="arrow-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 19 19 5M5 5h14v14" /></svg
+                ></span>
+              </div>
+              <h3>우리 아이의 내일,<br />함께 살짝 들여다볼까요?</h3>
+              <p>
+                부모님의 키를 입력하면<br />예상 성인 키를 확인할 수 있어요.
+              </p>
+              <span class="empty-caption">키만큼, 가능성도 자라고 있어요.</span>
+            </div>
+            <div
+              id="calculated-result"
+              class="calculated-result"
+              hidden
+              tabindex="-1"
+            >
+              <span class="result-eyebrow">OUR LITTLE BIG FUTURE</span>
+              <p class="result-label">우리 아이의 예상 성인 키는</p>
+              <div class="height-value">
+                <strong id="result-height"></strong><span>cm</span
+                ><i aria-hidden="true">✦</i>
+              </div>
+              <span class="result-badge">부모 키 기반 참고값</span>
+              <div class="range-visual">
+                <div class="range-line"><span></span></div>
+                <div class="range-labels">
+                  <span id="range-low"></span><strong>예상 키</strong
+                  ><span id="range-high"></span>
+                </div>
+              </div>
+              <p class="range-description">
+                참고 범위 <strong id="range-text"></strong><br /><span
+                  >개인별 성장에 따라 이 범위를 벗어날 수 있어요.</span
+                >
+              </p>
+              <div class="result-actions">
+                <button id="copy-button" type="button">
+                  결과 복사
+                  <span aria-hidden="true"
+                    ><svg
+                      class="arrow-icon"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 19 19 5M5 5h14v14" /></svg
+                  ></span></button
+                ><button id="reset-button" type="button">
+                  다시 입력 <span aria-hidden="true">↺</span>
+                </button>
+              </div>
+              <p class="copy-status" id="copy-status" role="status"></p>
+            </div>
+          </div>
+        </div>
+        <p class="calculation-note">
+          <span aria-hidden="true">ⓘ</span> 부모 키로 계산하는 참고용 추정치로,
+          아이의 최종 키를 보장하거나 의학적 진단을 대신하지 않아요.
+          <a href="#method"
+            >계산 방법 알아보기
+            <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 19 19 5M5 5h14v14" /></svg
+          ></a>
+        </p>
+      </section>
+
+      <section
+        class="growth-guide"
+        id="growth-guide"
+        aria-labelledby="guide-title"
+      >
+        <div class="section-heading">
+          <div>
+            <p class="overline">SMALL HABITS, BIG TOMORROWS</p>
+            <h2 id="guide-title">키보다 더 큰, 건강한 성장</h2>
+          </div>
+          <p class="section-description">오늘부터 함께할 수 있는 작은 습관들</p>
+        </div>
+        <div class="guide-cards">
+          <article class="guide-card">
+            <div class="guide-icon sleep-icon" aria-hidden="true">
+              ☾<span>✦</span>
+            </div>
+            <span class="guide-category">SLEEP WELL</span>
+            <h3>잘 자는 밤이 쌓이도록</h3>
+            <p>
+              규칙적인 취침 시간과 충분한 수면으로<br class="desktop-break" />
+              아이만의 건강한 리듬을 만들어 주세요.
+            </p>
+            <a href="#habit-details"
+              >수면 습관 살펴보기
+              <span aria-hidden="true"
+                ><svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 19 19 5M5 5h14v14" /></svg></span
+            ></a>
+          </article>
+          <article class="guide-card">
+            <div class="guide-icon food-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48">
+                <path d="M8 20h32a16 16 0 0 1-32 0" />
+                <path d="M18 38h12M19 15c-8-5 0-10-4-14m12 14c-8-5 0-10-4-14" />
+              </svg>
+            </div>
+            <span class="guide-category">EAT A RAINBOW</span>
+            <h3>골고루 먹는 즐거움</h3>
+            <p>
+              특별한 한 가지 음식보다 다양한 식재료로<br
+                class="desktop-break"
+              />
+              균형 잡힌 한 끼를 함께해 주세요.
+            </p>
+            <a href="#nutrition-details"
+              >식사 습관 살펴보기
+              <span aria-hidden="true"
+                ><svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 19 19 5M5 5h14v14" /></svg></span
+            ></a>
+          </article>
+          <article class="guide-card">
+            <div class="guide-icon move-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48">
+                <circle cx="24" cy="24" r="17" />
+                <path
+                  d="M8 19c15 0 19 8 22 21M18 8c0 16 8 24 22 24M11 35 36 11"
+                />
+              </svg>
+            </div>
+            <span class="guide-category">MOVE & PLAY</span>
+            <h3>뛰어노는 오늘의 에너지</h3>
+            <p>
+              아이가 좋아하는 놀이와 신체활동으로<br class="desktop-break" />
+              몸도 마음도 튼튼하게 자라도록 도와주세요.
+            </p>
+            <a href="#activity-details"
+              >활동 습관 살펴보기
+              <span aria-hidden="true"
+                ><svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 19 19 5M5 5h14v14" /></svg></span
+            ></a>
+          </article>
+        </div>
+      </section>
+
+      <section class="faq-section" aria-labelledby="faq-title">
+        <div>
+          <p class="overline">GOOD TO KNOW</p>
+          <h2 id="faq-title">성장이 궁금한<br />엄마 아빠에게</h2>
+          <p>
+            예상 키는 하나의 힌트예요.<br />아이의 성장 과정을 함께 살펴주세요.
+          </p>
+        </div>
+        <div class="faq-list">
+          <details id="method">
+            <summary>
+              예상 키는 어떻게 계산하나요?<span aria-hidden="true">+</span>
+            </summary>
+            <div>
+              <p>
+                부모의 평균 키를 바탕으로 하는 중간부모키(Mid-parental height)
+                공식을 사용해요.
+              </p>
+              <ul>
+                <li>남아: (아빠 키 + 엄마 키 + 13) ÷ 2</li>
+                <li>여아: (아빠 키 + 엄마 키 − 13) ÷ 2</li>
+              </ul>
+              <p>
+                소수점 첫째 자리로 표시하며, 참고 범위는 계산값 ±10 cm예요.
+                개인의 나이, 현재 키, 사춘기 시기, 골연령을 반영하지 않는 단순
+                추정입니다. 범위는 개인에게 보장되는 최솟값·최댓값이 아니에요.
+              </p>
+              <a
+                href="https://www.aafp.org/pubs/afp/issues/2015/0701/p43.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                >계산 근거: AAFP, Evaluation of Short and Tall Stature in
+                Children (2015)
+                <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 19 19 5M5 5h14v14" /></svg
+              ></a>
+            </div>
+          </details>
+          <details>
+            <summary>
+              계산 결과가 아이의 최종 키인가요?<span aria-hidden="true">+</span>
+            </summary>
+            <div>
+              <p>
+                아니에요. 유전 외에도 영양, 건강 상태, 사춘기 시기 등 여러
+                요인이 성장에 영향을 줍니다. 이 계산기는 현재 키나 성장 속도를
+                평가하지 않아요. 키에 대한 걱정이 있다면 정기적인 측정 기록을
+                가지고 소아청소년과에서 상담해 주세요.
+              </p>
+            </div>
+          </details>
+          <details id="habit-details">
+            <summary>
+              수면 습관은 어떻게 챙기면 좋을까요?<span aria-hidden="true"
+                >+</span
+              >
+            </summary>
+            <div>
+              <p>
+                주말에도 비슷한 시간에 자고 일어나는 습관을 만들어 주세요.
+                잠들기 전에는 화면 사용을 줄이고 조용한 환경을 준비해 주세요.
+                필요한 수면 시간은 나이에 따라 달라요. 잠을 더 잔다고 특정 키에
+                도달하는 것은 아닙니다.
+              </p>
+            </div>
+          </details>
+          <details id="nutrition-details">
+            <summary>
+              키가 크는 특별한 음식이 있나요?<span aria-hidden="true">+</span>
+            </summary>
+            <div>
+              <p>
+                특정 음식이나 건강기능식품이 최종 키를 보장하지는 않아요. 곡류,
+                단백질 식품, 채소와 과일 등을 골고루 먹는 것이 기본이에요.
+                알레르기나 영양 결핍이 걱정된다면 의료진과 상의해 주세요.
+              </p>
+            </div>
+          </details>
+          <details id="activity-details">
+            <summary>
+              어떤 운동이 성장에 도움이 될까요?<span aria-hidden="true">+</span>
+            </summary>
+            <div>
+              <p>
+                걷기, 자전거 타기, 공놀이 등 아이가 즐겁게 지속할 수 있는 활동을
+                선택해 주세요. 특정 운동이 뼈를 늘리거나 최종 키를 보장하지는
+                않아요. 나이와 체력에 맞게 활동하고 충분히 쉬는 것이 중요해요.
+              </p>
+            </div>
+          </details>
+        </div>
+      </section>
+      <aside class="closing-note">
+        <span aria-hidden="true">✦</span>
+        <p>
+          비교보다는 응원을, 숫자보다는 건강을.<br /><strong
+            >우리 아이는 자신만의 속도로 자라고 있어요.</strong
+          >
+        </p>
+        <span aria-hidden="true">✦</span>
+      </aside>
+    </main>
+    <footer>
+      <a class="brand" href="#">kids<span>10</span><i></i></a>
+      <p>우리 아이의 건강한 내일을 함께합니다.</p>
+      <span>키즈텐 · 성장 계산기 개편 시안</span>
+    </footer>
+  </body>
+</html>

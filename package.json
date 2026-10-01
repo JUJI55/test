@@ -1,0 +1,10 @@
+{
+  "name": "kids10-height-calculator",
+  "version": "1.0.0",
+  "private": true,
+  "description": "키즈텐 우리아이 예상 키 개편 시안",
+  "scripts": {
+    "start": "python3 -m http.server 3000 --bind 0.0.0.0",
+    "test": "node --test tests/calculator.test.cjs"
+  }
+}
