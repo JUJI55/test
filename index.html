@@ -10,6 +10,7 @@
     />
     <title>우리 아이 예상 키 · 키즈텐</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="report.css" />
     <script src="calculator.js" defer></script>
     <script src="app.js" defer></script>
   </head>
@@ -32,14 +33,14 @@
         <div class="hero-copy">
           <p class="eyebrow"><span></span> GROWING TOGETHER, EVERY DAY</p>
           <h1 id="page-title">
-            작은 오늘이 자라,<br /><span>얼마나 커질까요?</span>
+            지금의 키에서,<br /><span>내일의 성장을 읽어요.</span>
           </h1>
           <p class="hero-description">
-            엄마와 아빠의 키에 담긴 성장의 힌트.<br />우리 아이의 내일을 함께
-            그려보세요.
+            예상 키부터 차곡차곡 쌓인 성장 기록까지.<br />우리 아이만의 성장
+            이야기를 한눈에 만나보세요.
           </p>
           <a class="hero-link" href="#calculator"
-            >우리 아이 예상 키 알아보기 <span aria-hidden="true">↓</span></a
+            >우리 아이 리포트 만들기 <span aria-hidden="true">↓</span></a
           >
         </div>
         <div class="hero-art" aria-hidden="true">
@@ -146,158 +147,340 @@
       </section>
 
       <section
-        class="calculator-section"
+        class="calculator-section growth-studio"
         id="calculator"
         aria-labelledby="calculator-title"
       >
-        <div class="section-heading">
+        <div class="section-heading studio-heading">
           <div>
-            <p class="overline">A LITTLE PEEK INTO TOMORROW</p>
-            <h2 id="calculator-title">우리 아이 예상 키</h2>
+            <p class="overline">KIDS10 GROWTH REPORT</p>
+            <h2 id="calculator-title">
+              우리 아이 성장 리포트<span class="new-badge">NEW</span>
+            </h2>
           </div>
-          <span class="time-chip"
-            ><span aria-hidden="true">◷</span> 약 10초면 충분해요</span
-          >
+          <button type="button" class="text-button" id="example-button">
+            샘플 리포트 먼저 보기 <span aria-hidden="true">→</span>
+          </button>
         </div>
-        <div class="calculator-card">
-          <form id="height-form" novalidate>
-            <div class="form-heading">
-              <span class="step-number">01</span>
-              <div>
-                <h3>성장의 힌트를 알려주세요</h3>
-                <p>부모님의 현재 키를 입력해 주세요.</p>
-              </div>
-            </div>
-            <fieldset class="sex-field">
-              <legend>우리 아이 성별</legend>
-              <div class="segmented-control">
-                <label
-                  ><input type="radio" name="sex" value="boy" checked /><span
-                    ><svg viewBox="0 0 24 24" aria-hidden="true">
-                      <circle cx="12" cy="12" r="8" />
-                      <path
-                        d="M5 9c4 1 6-1 7-4 1 3 4 4 7 4M9 12v1m6-1v1m-6 3q3 2 6 0"
-                      /></svg
-                    >남아<span class="selection-dot">✓</span></span
-                  ></label
-                ><label
-                  ><input type="radio" name="sex" value="girl" /><span
-                    ><svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path
-                        d="M4 18V10a8 8 0 0 1 16 0v8M6 10c4 0 6-4 6-4s2 4 6 4v3a6 6 0 0 1-12 0zM9 12v1m6-1v1m-6 3q3 2 6 0"
-                      /></svg
-                    >여아<span class="selection-dot">✓</span></span
+        <div class="saved-banner" id="saved-banner" hidden>
+          <div>
+            <strong>이 기기에 저장한 기록이 있어요.</strong
+            ><span>직접 불러오기 전에는 화면에 표시하지 않아요.</span>
+          </div>
+          <button type="button" id="load-button">불러오기</button
+          ><button type="button" id="delete-button">삭제</button>
+        </div>
+        <div id="studio-input">
+          <ol class="stepper" aria-label="리포트 작성 단계">
+            <li aria-current="step">
+              <span>1</span>
+              <div><strong>우리 아이</strong><small>현재의 성장</small></div>
+            </li>
+            <li>
+              <span>2</span>
+              <div><strong>부모님</strong><small>유전적 힌트</small></div>
+            </li>
+            <li>
+              <span>3</span>
+              <div><strong>성장 기록</strong><small>시간 속의 변화</small></div>
+            </li>
+          </ol>
+          <div class="studio-layout">
+            <form id="height-form" novalidate>
+              <section
+                class="wizard-step"
+                data-step="0"
+                aria-labelledby="step-title-0"
+              >
+                <div class="step-heading">
+                  <span class="step-kicker">STEP 01 / 03</span>
+                  <h3 id="step-title-0" tabindex="-1">
+                    지금, 얼마나 자랐나요?
+                  </h3>
+                  <p>만 2~18세 아이의 정보를 알려주세요.</p>
+                </div>
+                <div class="fields-grid">
+                  <div class="field">
+                    <label for="nickname"
+                      >아이 별명 <span class="optional">선택</span></label
+                    >
+                    <div class="input-wrap">
+                      <input
+                        id="nickname"
+                        name="nickname"
+                        type="text"
+                        maxlength="12"
+                        placeholder="예: 쑥쑥이"
+                        autocomplete="off"
+                        aria-describedby="nickname-error"
+                      />
+                    </div>
+                    <p class="field-error" id="nickname-error"></p>
+                  </div>
+                  <fieldset class="sex-field">
+                    <legend>아이 성별</legend>
+                    <div class="segmented-control">
+                      <label
+                        ><input
+                          type="radio"
+                          name="sex"
+                          value="boy"
+                          checked
+                        /><span
+                          >남아<span class="selection-dot">✓</span></span
+                        ></label
+                      ><label
+                        ><input type="radio" name="sex" value="girl" /><span
+                          >여아<span class="selection-dot">✓</span></span
+                        ></label
+                      >
+                    </div>
+                  </fieldset>
+                  <div class="field">
+                    <label for="birth">생년월일</label>
+                    <div class="input-wrap">
+                      <input
+                        id="birth"
+                        name="birth"
+                        type="date"
+                        required
+                        aria-describedby="birth-error"
+                      />
+                    </div>
+                    <p class="field-error" id="birth-error"></p>
+                  </div>
+                  <div class="field">
+                    <label for="measured">현재 키 측정일</label>
+                    <div class="input-wrap">
+                      <input
+                        id="measured"
+                        name="measured"
+                        type="date"
+                        required
+                        aria-describedby="measured-error"
+                      />
+                    </div>
+                    <p class="field-error" id="measured-error"></p>
+                  </div>
+                  <div class="field height-entry">
+                    <label for="child-height">현재 키</label>
+                    <div class="input-wrap">
+                      <input
+                        id="child-height"
+                        name="height"
+                        type="text"
+                        inputmode="decimal"
+                        maxlength="5"
+                        placeholder="128.5"
+                        required
+                        aria-describedby="height-error"
+                      /><span>cm</span>
+                    </div>
+                    <p class="field-error" id="height-error"></p>
+                  </div>
+                  <div class="measurement-tip">
+                    <span aria-hidden="true">↕</span>
+                    <p>
+                      신발을 벗고, 등을 곧게.<br />가능하면 같은 시간에 측정해
+                      주세요.
+                    </p>
+                  </div>
+                </div>
+              </section>
+              <section
+                class="wizard-step"
+                data-step="1"
+                aria-labelledby="step-title-1"
+                hidden
+              >
+                <div class="step-heading">
+                  <span class="step-kicker">STEP 02 / 03</span>
+                  <h3 id="step-title-1" tabindex="-1">
+                    부모님의 키에 담긴 힌트
+                  </h3>
+                  <p>부모의 평균 키를 바탕으로 예상 성인 키를 계산해요.</p>
+                </div>
+                <div class="parent-cards">
+                  <div class="parent-card">
+                    <span class="parent-avatar" aria-hidden="true"
+                      ><svg viewBox="0 0 48 48">
+                        <circle cx="24" cy="21" r="11" />
+                        <path
+                          d="M8 44c0-17 32-17 32 0M14 18c7 1 10-5 10-8 2 6 7 8 10 8M20 22v1m8-1v1m-8 4q4 3 8 0"
+                        /></svg
+                    ></span>
+                    <div class="field">
+                      <label for="father-height">아빠 키</label>
+                      <div class="input-wrap">
+                        <input
+                          id="father-height"
+                          name="father"
+                          type="text"
+                          inputmode="decimal"
+                          maxlength="5"
+                          placeholder="175.0"
+                          aria-describedby="father-error"
+                        /><span>cm</span>
+                      </div>
+                      <p class="field-error" id="father-error"></p>
+                    </div>
+                  </div>
+                  <div class="parent-card">
+                    <span class="parent-avatar mom" aria-hidden="true"
+                      ><svg viewBox="0 0 48 48">
+                        <path
+                          d="M10 32V20a14 14 0 0 1 28 0v12M8 44c0-17 32-17 32 0M14 19c6 0 10-7 10-7s4 7 10 7v5a10 10 0 0 1-20 0zM20 22v1m8-1v1m-8 4q4 3 8 0"
+                        /></svg
+                    ></span>
+                    <div class="field">
+                      <label for="mother-height">엄마 키</label>
+                      <div class="input-wrap">
+                        <input
+                          id="mother-height"
+                          name="mother"
+                          type="text"
+                          inputmode="decimal"
+                          maxlength="5"
+                          placeholder="162.0"
+                          aria-describedby="mother-error"
+                        /><span>cm</span>
+                      </div>
+                      <p class="field-error" id="mother-error"></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="soft-note">
+                  <span aria-hidden="true">ⓘ</span>
+                  <p>
+                    부모의 키는 성장의 여러 요인 중 하나예요. 이 계산에는 아이의
+                    현재 키나 나이를 넣어 최종 키를 보정하지 않아요.
+                  </p>
+                </div>
+              </section>
+              <section
+                class="wizard-step"
+                data-step="2"
+                aria-labelledby="step-title-2"
+                hidden
+              >
+                <div class="step-heading">
+                  <span class="step-kicker">STEP 03 / 03</span>
+                  <h3 id="step-title-2" tabindex="-1">
+                    지난번보다 얼마나 컸을까요?
+                  </h3>
+                  <p>
+                    이전 측정 기록이 있으면 실제 키 변화를 함께 볼 수 있어요.
+                  </p>
+                </div>
+                <label class="history-toggle"
+                  ><input id="history-enabled" type="checkbox" /><span
+                    class="toggle-switch"
+                    aria-hidden="true"
+                  ></span
+                  ><span
+                    ><strong>이전 측정 기록 추가하기</strong
+                    ><small>선택 사항 · 최대 5개</small></span
                   ></label
                 >
-              </div>
-            </fieldset>
-            <div class="parent-fields">
-              <div class="field">
-                <label for="father-height">아빠 키</label>
-                <div class="input-wrap">
-                  <input
-                    id="father-height"
-                    name="father"
-                    type="text"
-                    inputmode="decimal"
-                    autocomplete="off"
-                    placeholder="예: 175"
-                    aria-describedby="father-error"
-                    maxlength="7"
-                  /><span>cm</span>
+                <div id="history-fields" hidden>
+                  <div id="history-rows"></div>
+                  <button type="button" class="add-record" id="add-record">
+                    + 측정 기록 추가
+                  </button>
+                  <p id="records-error" class="field-error" role="status"></p>
+                  <p class="input-help">
+                    90일 미만의 짧은 기록은 연간 변화로 환산하지 않아요. 날짜별
+                    기록은 자동으로 정렬해요.
+                  </p>
                 </div>
-                <p class="field-error" id="father-error"></p>
-              </div>
-              <div class="field">
-                <label for="mother-height">엄마 키</label>
-                <div class="input-wrap">
-                  <input
-                    id="mother-height"
-                    name="mother"
-                    type="text"
-                    inputmode="decimal"
-                    autocomplete="off"
-                    placeholder="예: 162"
-                    aria-describedby="mother-error"
-                    maxlength="7"
-                  /><span>cm</span>
+                <div class="no-history" id="no-history">
+                  <span aria-hidden="true">▥</span>
+                  <h4>첫 기록이어도 괜찮아요.</h4>
+                  <p>
+                    오늘의 키가 성장 타임라인의 시작점이 됩니다.<br />지금은
+                    예상 성인 키와 현재 기록을 확인해 보세요.
+                  </p>
                 </div>
-                <p class="field-error" id="mother-error"></p>
+              </section>
+              <div class="wizard-actions">
+                <button
+                  type="button"
+                  id="previous-button"
+                  class="secondary-button"
+                  hidden
+                >
+                  ← 이전</button
+                ><button type="submit" id="next-button" class="primary-button">
+                  부모님 정보 입력 <span aria-hidden="true">→</span>
+                </button>
               </div>
-            </div>
-            <button class="calculate-button" type="submit">
-              우리 아이 예상 키 확인하기
-              <span aria-hidden="true"
-                ><svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M5 19 19 5M5 5h14v14" /></svg
-              ></span>
-            </button>
-            <div class="form-bottom">
-              <p>
+              <p class="privacy-note">
                 <svg viewBox="0 0 16 16" aria-hidden="true">
                   <rect x="3" y="7" width="10" height="7" rx="2" />
                   <path d="M5 7V5a3 3 0 0 1 6 0v2" /></svg
-                >입력한 정보는 저장되지 않아요
+                >입력 정보는 서버로 전송하거나 자동 저장하지 않아요.
               </p>
-              <button id="example-button" type="button">예시로 보기</button>
-            </div>
-          </form>
-          <div
-            class="result-panel"
-            id="result-panel"
-            aria-live="polite"
-            aria-atomic="true"
-          >
-            <div id="empty-result" class="empty-result">
-              <span class="result-eyebrow">OUR LITTLE BIG FUTURE</span>
-              <div class="height-symbol" aria-hidden="true">
-                <span class="symbol-star">✦</span
-                ><span class="height-bar bar-small"></span
-                ><span class="height-bar bar-medium"></span
-                ><span class="height-bar bar-tall"></span
-                ><span class="symbol-arrow"
-                  ><svg
-                    class="arrow-icon"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path d="M5 19 19 5M5 5h14v14" /></svg
-                ></span>
+            </form>
+            <aside class="report-preview" aria-label="리포트 미리보기">
+              <div class="preview-top">
+                <span class="overline">A STORY OF GROWTH</span
+                ><span aria-hidden="true">✦</span>
               </div>
-              <h3>우리 아이의 내일,<br />함께 살짝 들여다볼까요?</h3>
+              <h3>숫자 하나보다,<br />성장의 흐름을.</h3>
               <p>
-                부모님의 키를 입력하면<br />예상 성인 키를 확인할 수 있어요.
+                우리 아이만의 작은 성장 이야기를<br />한 장의 리포트로
+                만나보세요.
               </p>
-              <span class="empty-caption">키만큼, 가능성도 자라고 있어요.</span>
-            </div>
-            <div
-              id="calculated-result"
-              class="calculated-result"
-              hidden
-              tabindex="-1"
-            >
-              <span class="result-eyebrow">OUR LITTLE BIG FUTURE</span>
-              <p class="result-label">우리 아이의 예상 성인 키는</p>
-              <div class="height-value">
-                <strong id="result-height"></strong><span>cm</span
-                ><i aria-hidden="true">✦</i>
+              <div class="preview-chart" aria-hidden="true">
+                <svg viewBox="0 0 280 120">
+                  <defs>
+                    <linearGradient
+                      id="preview-fill"
+                      x1="0"
+                      y1="0"
+                      x2="0"
+                      y2="1"
+                    >
+                      <stop stop-color="#ab8de2" stop-opacity=".3" />
+                      <stop offset="1" stop-color="#ab8de2" stop-opacity="0" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    d="M10 100Q75 90 105 70T175 48T260 10V120H10Z"
+                    fill="url(#preview-fill)"
+                  />
+                  <path
+                    d="M10 100Q75 90 105 70T175 48T260 10"
+                    fill="none"
+                    stroke="#9c7ad2"
+                    stroke-width="3"
+                    stroke-dasharray="5 6"
+                  />
+                  <circle
+                    cx="105"
+                    cy="70"
+                    r="6"
+                    fill="#7352d6"
+                    stroke="white"
+                    stroke-width="3"
+                  />
+                  <circle
+                    cx="175"
+                    cy="48"
+                    r="6"
+                    fill="#7352d6"
+                    stroke="white"
+                    stroke-width="3"
+                  /></svg
+                ><span>리포트 구성 예시 · 실제 결과 아님</span>
               </div>
-              <span class="result-badge">부모 키 기반 참고값</span>
-              <div class="range-visual">
-                <div class="range-line"><span></span></div>
-                <div class="range-labels">
-                  <span id="range-low"></span><strong>예상 키</strong
-                  ><span id="range-high"></span>
-                </div>
-              </div>
-              <p class="range-description">
-                참고 범위 <strong id="range-text"></strong><br /><span
-                  >개인별 성장에 따라 이 범위를 벗어날 수 있어요.</span
-                >
-              </p>
-              <div class="result-actions">
-                <button id="copy-button" type="button">
-                  결과 복사
+              <ul class="report-includes">
+                <li>
+                  <span>01</span>
+                  <div>
+                    <strong>예상 성인 키</strong
+                    ><small>부모 키에 담긴 유전적 힌트</small>
+                  </div>
                   <span aria-hidden="true"
                     ><svg
                       class="arrow-icon"
@@ -305,24 +488,317 @@
                       aria-hidden="true"
                     >
                       <path d="M5 19 19 5M5 5h14v14" /></svg
-                  ></span></button
-                ><button id="reset-button" type="button">
-                  다시 입력 <span aria-hidden="true">↺</span>
-                </button>
-              </div>
-              <p class="copy-status" id="copy-status" role="status"></p>
-            </div>
+                  ></span>
+                </li>
+                <li>
+                  <span>02</span>
+                  <div>
+                    <strong>성장 타임라인</strong
+                    ><small>직접 측정한 기록을 한눈에</small>
+                  </div>
+                  <span aria-hidden="true"
+                    ><svg
+                      class="arrow-icon"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 19 19 5M5 5h14v14" /></svg
+                  ></span>
+                </li>
+                <li>
+                  <span>03</span>
+                  <div>
+                    <strong>다음 측정 가이드</strong
+                    ><small>꾸준히 관찰하는 방법</small>
+                  </div>
+                  <span aria-hidden="true"
+                    ><svg
+                      class="arrow-icon"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 19 19 5M5 5h14v14" /></svg
+                  ></span>
+                </li>
+              </ul>
+            </aside>
           </div>
         </div>
-        <p class="calculation-note">
-          <span aria-hidden="true">ⓘ</span> 부모 키로 계산하는 참고용 추정치로,
-          아이의 최종 키를 보장하거나 의학적 진단을 대신하지 않아요.
-          <a href="#method"
-            >계산 방법 알아보기
-            <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M5 19 19 5M5 5h14v14" /></svg
-          ></a>
-        </p>
+        <section
+          class="growth-report"
+          id="growth-report"
+          aria-labelledby="report-title"
+          hidden
+        >
+          <div class="report-heading">
+            <div>
+              <p class="overline">PERSONAL GROWTH REPORT</p>
+              <h3 id="report-title" tabindex="-1"></h3>
+              <p id="report-meta"></p>
+            </div>
+            <div class="report-tools">
+              <button type="button" id="edit-button" class="secondary-button">
+                입력 수정</button
+              ><button type="button" id="print-button" class="secondary-button">
+                리포트 인쇄 / PDF
+              </button>
+            </div>
+          </div>
+          <div class="report-main-grid">
+            <article class="prediction-card">
+              <div class="prediction-top">
+                <span>부모 키 기반 예상 성인 키</span
+                ><span class="outline-badge">참고값</span>
+              </div>
+              <p class="prediction-number">
+                <strong id="result-height"></strong><span>cm</span
+                ><i aria-hidden="true">✦</i>
+              </p>
+              <p class="prediction-caption">
+                아이의 미래를 정하는 숫자가 아닌, 성장의 힌트예요.
+              </p>
+              <div class="prediction-range">
+                <div><span></span></div>
+                <p>
+                  <span id="range-low"></span><span>참고 범위 ±10 cm</span
+                  ><span id="range-high"></span>
+                </p>
+              </div>
+              <p class="prediction-footnote">
+                현재 키·나이·골연령은 이 추정치에 반영되지 않아요.<br />실제
+                최종 키는 표시 범위를 벗어날 수 있어요.
+              </p>
+            </article>
+            <div class="metric-grid">
+              <article class="metric-card">
+                <span>현재 키</span>
+                <p><strong id="current-height"></strong><small>cm</small></p>
+                <span id="age-label"></span>
+              </article>
+              <article class="metric-card">
+                <span>기록 기간의 키 변화</span>
+                <p>
+                  <strong id="growth-gain"></strong
+                  ><small id="growth-gain-unit"></small>
+                </p>
+                <span id="growth-period"></span>
+              </article>
+              <article class="metric-card wide">
+                <div>
+                  <span>기록 기간의 연 환산 변화</span>
+                  <p>
+                    <strong id="growth-rate"></strong
+                    ><small id="growth-rate-unit"></small>
+                  </p>
+                </div>
+                <p id="growth-rate-note"></p>
+              </article>
+            </div>
+          </div>
+          <div class="report-tabs" role="tablist" aria-label="리포트 상세">
+            <button
+              type="button"
+              role="tab"
+              aria-selected="true"
+              aria-controls="timeline-panel"
+              id="timeline-tab"
+            >
+              성장 타임라인</button
+            ><button
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="insight-panel"
+              id="insight-tab"
+              tabindex="-1"
+            >
+              예상 키 해석</button
+            ><button
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="next-panel"
+              id="next-tab"
+              tabindex="-1"
+            >
+              다음 측정 가이드
+            </button>
+          </div>
+          <section
+            class="report-tab-panel"
+            role="tabpanel"
+            id="timeline-panel"
+            aria-labelledby="timeline-tab"
+          >
+            <div class="panel-heading">
+              <div>
+                <h4>작은 변화가 모여, 성장의 기록이 돼요.</h4>
+                <p>
+                  입력한 실측 기록만 표시합니다. 미래의 성장 곡선은 예측하지
+                  않아요.
+                </p>
+              </div>
+              <span class="chart-legend"><i></i>우리 아이 기록</span>
+            </div>
+            <div class="chart-notice" id="chart-notice" hidden></div>
+            <div class="chart-container" id="growth-chart"></div>
+            <details class="record-table-details">
+              <summary>
+                날짜별 측정 기록 보기 <span id="record-count"></span>
+              </summary>
+              <div class="table-scroll">
+                <table>
+                  <caption class="sr-only">
+                    아이의 날짜별 키 측정 기록
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">측정일</th>
+                      <th scope="col">키</th>
+                      <th scope="col">이전 기록 대비</th>
+                    </tr>
+                  </thead>
+                  <tbody id="record-table"></tbody>
+                </table>
+              </div>
+            </details>
+          </section>
+          <section
+            class="report-tab-panel"
+            role="tabpanel"
+            id="insight-panel"
+            aria-labelledby="insight-tab"
+            hidden
+          >
+            <div class="panel-heading">
+              <div>
+                <h4>이 숫자를 어떻게 읽으면 좋을까요?</h4>
+                <p>계산 과정과 실제 반영된 정보를 투명하게 알려드려요.</p>
+              </div>
+            </div>
+            <div class="formula-box">
+              <span>중간부모키 공식 · <span id="formula-sex"></span></span>
+              <p id="formula-text"></p>
+            </div>
+            <div class="insight-grid">
+              <article>
+                <span class="insight-number">01</span>
+                <h5>부모의 키로 계산했어요</h5>
+                <p>
+                  예상 성인 키는 부모 키와 성별만 사용합니다. 아이의 현재 키와
+                  측정 기록은 타임라인과 변화량에만 사용해요.
+                </p>
+              </article>
+              <article>
+                <span class="insight-number">02</span>
+                <h5>범위도 보장값은 아니에요</h5>
+                <p>
+                  ±10 cm는 참고 범위입니다. 개인별 확률이나 최솟값·최댓값이
+                  아니며 사춘기 시기와 건강 상태 등에 따라 달라질 수 있어요.
+                </p>
+              </article>
+              <article>
+                <span class="insight-number">03</span>
+                <h5>더 정확히 알고 싶다면</h5>
+                <p>
+                  성장 기록을 가지고 소아청소년과에서 상담해 주세요. 의료진이
+                  필요에 따라 성장도표, 사춘기 발달, 골연령 등을 함께
+                  살펴봅니다.
+                </p>
+              </article>
+            </div>
+            <a
+              class="source-link"
+              href="https://www.aafp.org/pubs/afp/issues/2015/0701/p43.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              >공식 근거: AAFP, Evaluation of Short and Tall Stature in Children
+              (2015) ↗</a
+            >
+          </section>
+          <section
+            class="report-tab-panel"
+            role="tabpanel"
+            id="next-panel"
+            aria-labelledby="next-tab"
+            hidden
+          >
+            <div class="panel-heading">
+              <div>
+                <h4>다음 기록도, 같은 기준으로.</h4>
+                <p>
+                  한 번의 숫자보다 일정한 방법으로 쌓은 기록이 도움이 됩니다.
+                </p>
+              </div>
+            </div>
+            <div class="next-measurement">
+              <span class="calendar-icon" aria-hidden="true">↻</span>
+              <div>
+                <span>현재 측정일에서 약 3개월 뒤</span
+                ><strong id="next-date"></strong>
+                <p id="next-date-note"></p>
+              </div>
+              <button
+                type="button"
+                id="calendar-button"
+                class="secondary-button"
+              >
+                캘린더 파일 받기
+              </button>
+            </div>
+            <ol class="measurement-checklist">
+              <li>
+                <span>1</span>
+                <div>
+                  <strong>같은 장소, 비슷한 시간에</strong>
+                  <p>시간대와 측정 도구에 따른 차이를 줄여 주세요.</p>
+                </div>
+              </li>
+              <li>
+                <span>2</span>
+                <div>
+                  <strong>맨발로 서서, 시선은 정면으로</strong>
+                  <p>발뒤꿈치를 모으고 바닥이 평평한 곳에서 측정해 주세요.</p>
+                </div>
+              </li>
+              <li>
+                <span>3</span>
+                <div>
+                  <strong>측정일과 키를 함께 기록하기</strong>
+                  <p>
+                    성장이 걱정된다면 다음 기록을 기다리지 말고 의료진과 상담해
+                    주세요.
+                  </p>
+                </div>
+              </li>
+            </ol>
+          </section>
+          <div class="report-bottom">
+            <p>
+              이 리포트는 참고용이며 성장 상태의 진단이나 최종 키를 보장하지
+              않아요.
+            </p>
+            <div>
+              <button type="button" id="save-button" class="secondary-button">
+                이 기기에 입력 기록 저장</button
+              ><button type="button" id="copy-button" class="secondary-button">
+                요약 복사</button
+              ><button type="button" id="reset-button" class="text-button">
+                새 리포트 만들기
+              </button>
+            </div>
+            <p class="storage-disclosure">
+              저장을 선택하면 이 브라우저에 생년월일과 키 기록이 남습니다. 공용
+              기기에서는 저장하지 마세요.
+            </p>
+          </div>
+        </section>
+        <p
+          id="studio-status"
+          class="studio-status"
+          role="status"
+          aria-live="polite"
+        ></p>
       </section>
 
       <section
@@ -447,9 +923,9 @@
             <div>
               <p>
                 아니에요. 유전 외에도 영양, 건강 상태, 사춘기 시기 등 여러
-                요인이 성장에 영향을 줍니다. 이 계산기는 현재 키나 성장 속도를
-                평가하지 않아요. 키에 대한 걱정이 있다면 정기적인 측정 기록을
-                가지고 소아청소년과에서 상담해 주세요.
+                요인이 성장에 영향을 줍니다. 현재 키와 기록 기간의 변화량도 성장
+                상태에 대한 진단은 아니에요. 키에 대한 걱정이 있다면 정기적인
+                측정 기록을 가지고 소아청소년과에서 상담해 주세요.
               </p>
             </div>
           </details>
